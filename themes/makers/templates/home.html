@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }}{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>{{ SITENAME }}</h1>
+    <p>{{ page.content }}</p>
+</div>
+
+<div class="info-cards">
+    <div class="info-card">
+        <h3>{% if DEFAULT_LANG == 'he' %}כתובת{% elif DEFAULT_LANG == 'ar' %}العنوان{% elif DEFAULT_LANG == 'ru' %}Адрес{% else %}Address{% endif %}</h3>
+        <p>{% if DEFAULT_LANG == 'he' %}קרוננברג 1, רחובות<br>ספריית רחובות החדשה, קומה 2{% elif DEFAULT_LANG == 'ar' %}كرونينبرغ 1، رحوفوت<br>مكتبة رحوفوت الجديدة، الطابق 2{% elif DEFAULT_LANG == 'ru' %}Кроненберг 1, Реховот<br>Новая библиотека Реховота, 2-й этаж{% else %}Kronenberg 1, Rehovot<br>New Rehovot Library, 2nd floor{% endif %}</p>
+    </div>
+    <div class="info-card">
+        <h3>{% if DEFAULT_LANG == 'he' %}שעות{% elif DEFAULT_LANG == 'ar' %}الساعات{% elif DEFAULT_LANG == 'ru' %}Часы работы{% else %}Hours{% endif %}</h3>
+        <p>{% if DEFAULT_LANG == 'he' %}לוח הפעילויות משתנה — הצטרפו לקבוצה השקטה לעדכונים{% elif DEFAULT_LANG == 'ar' %}جدول الأنشطة يتغير — انضموا للمجموعة للتحديثات{% elif DEFAULT_LANG == 'ru' %}Расписание меняется — вступите в группу для обновлений{% else %}Schedule varies — join the WhatsApp group for updates{% endif %}</p>
+    </div>
+    <div class="info-card">
+        <h3>{% if DEFAULT_LANG == 'he' %}גיל{% elif DEFAULT_LANG == 'ar' %}السن{% elif DEFAULT_LANG == 'ru' %}Возраст{% else %}Age{% endif %}</h3>
+        <p>{% if DEFAULT_LANG == 'he' %}פתוח לכולם. עד גיל 12 בליווי מבוגר{% elif DEFAULT_LANG == 'ar' %}مفتوح للجميع. حتى سن 12 برفقة بالغ{% elif DEFAULT_LANG == 'ru' %}Открыто для всех. До 12 лет — со взрослым{% else %}Open to all. Under 12 with an adult{% endif %}</p>
+    </div>
+</div>
+{% endblock %}

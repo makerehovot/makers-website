@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}{% if DEFAULT_LANG == 'he' %}פעילויות שעברו{% elif DEFAULT_LANG == 'ar' %}الأنشطة السابقة{% elif DEFAULT_LANG == 'ru' %}Прошлые занятия{% else %}Past Activities{% endif %} — {{ SITENAME }}{% endblock %}
+
+{% block content %}
+<div class="page-content">
+    <h1>{% if DEFAULT_LANG == 'he' %}פעילויות שעברו{% elif DEFAULT_LANG == 'ar' %}الأنشطة السابقة{% elif DEFAULT_LANG == 'ru' %}Прошлые занятия{% else %}Past Activities{% endif %}</h1>
+
+    {% if articles %}
+    <div class="articles-list">
+        {% for article in articles %}
+        <a class="article-card" href="{{ SITEURL }}/{{ article.url }}">
+            <time datetime="{{ article.date.isoformat() }}">{{ article.date.strftime('%d.%m.%Y') }}</time>
+            <h2>{{ article.title }}</h2>
+            {% if article.summary %}
+            <p>{{ article.summary | striptags | truncate(120) }}</p>
+            {% endif %}
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>{% if DEFAULT_LANG == 'he' %}אין פעילויות עדיין.{% elif DEFAULT_LANG == 'ar' %}لا توجد أنشطة بعد.{% elif DEFAULT_LANG == 'ru' %}Занятий пока нет.{% else %}No activities yet.{% endif %}</p>
+    {% endif %}
+</div>
+{% endblock %}

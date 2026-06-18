@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}" dir="{{ 'rtl' if DEFAULT_LANG in ['he', 'ar'] else 'ltr' }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+    <link rel="stylesheet" href="/theme/css/main.css">
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a class="logo" href="{{ SITEURL }}/">
+                {# Replace div with <img src="{{ SITEURL }}/theme/images/logo.png" alt="{{ SITENAME }}"> when logo is ready #}
+                <div class="logo-placeholder">חמ</div>
+            </a>
+            <nav>
+                <a href="{{ SITEURL }}/">{% if DEFAULT_LANG == 'he' %}ראשי{% elif DEFAULT_LANG == 'ar' %}الرئيسية{% elif DEFAULT_LANG == 'ru' %}Главная{% else %}Home{% endif %}</a>
+                {% for title, link in MENUITEMS %}
+                <a href="{{ link }}">{{ title }}</a>
+                {% endfor %}
+            </nav>
+            <div class="lang-switcher">
+                <a href="/" {% if DEFAULT_LANG == 'he' %}class="current"{% endif %}>ע</a>
+                <a href="/en/" {% if DEFAULT_LANG == 'en' %}class="current"{% endif %}>EN</a>
+                <a href="/ar/" {% if DEFAULT_LANG == 'ar' %}class="current"{% endif %}>ع</a>
+                <a href="/ru/" {% if DEFAULT_LANG == 'ru' %}class="current"{% endif %}>РУ</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <div class="container">
+            {% if DEFAULT_LANG == 'he' %}
+            בשיתוף עם <a href="{{ SPONSOR_URL }}">ספריות רחובות</a>
+            {% elif DEFAULT_LANG == 'ar' %}
+            بالشراكة مع <a href="{{ SPONSOR_URL }}">مكتبات رحوفوت</a>
+            {% elif DEFAULT_LANG == 'ru' %}
+            В партнёрстве с <a href="{{ SPONSOR_URL }}">Библиотеки Реховота</a>
+            {% else %}
+            In partnership with <a href="{{ SPONSOR_URL }}">Rehovot Libraries</a>
+            {% endif %}
+        </div>
+    </footer>
+</body>
+</html>

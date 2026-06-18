@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }} — {{ SITENAME }}{% endblock %}
+
+{% block content %}
+<article>
+    <div class="article-header">
+        <h1>{{ article.title }}</h1>
+        <time datetime="{{ article.date.isoformat() }}">{{ article.date.strftime('%d.%m.%Y') }}</time>
+    </div>
+    <div class="article-body">
+        {{ article.content }}
+    </div>
+</article>
+{% endblock %}
